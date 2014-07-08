@@ -8,6 +8,9 @@ public class C_Controller {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		C_Network net = new C_Network("localhost", 5555);
+		
+		net.stringSenden("Hallo Welt!");
+		System.out.println(net.stringEmpfangen());
 	}
 
 }
