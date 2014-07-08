@@ -60,7 +60,6 @@ public class C_Network {
 	/**
 	 * Wartet auf einen String. Der String muss unbedingt mit einem Zeilenumbruch beendet werden!
 	 * @return empfangener String
-	 * TODO ungetestet!
 	 */
 	public String stringEmpfangen(){
 		try {
