@@ -15,12 +15,13 @@ public class C_Controller {
 	}
 	
 	public  C_Controller(){
-		this.net = new C_Network("localhost", 5555);
-		this.model = new C_Model();
+		//this.net = new C_Network("localhost", 5555);
+		this.model = new C_Model("contacts.bin", "identities.bin");
 		
+		//model.addContact("Matthias Kraus", "matthiaskraus@live.de", "015259530899", "", "", new String[]{"localhost","5555"});
 		
-		net.stringSenden(C_Krypto.encryptString("Hallo Welt!", C_Krypto.lookup("matthiaskraus@live.de")));
-		System.out.println(net.stringEmpfangen());
+		//net.stringSenden(C_Krypto.encryptString("Hallo Welt!", C_Krypto.lookup("matthiaskraus@live.de")));
+		//System.out.println(net.stringEmpfangen());
 	}
 
 }
