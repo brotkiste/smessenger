@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ListIterator;
 import java.util.Vector;
 
 import org.bouncycastle.openpgp.PGPException;
@@ -16,14 +17,15 @@ public class C_Model {
 	private String identitiesfile;
 	
 	
-	private Vector<C_Contact>  contacts;
-	private Vector<C_Identitiy> identities;
+	private Vector<C_Contact>  		contacts;
+	private Vector<C_Identitiy> 	identities;
+	private Vector<C_Server> 		servers;
 	
 	public C_Model(String contactsfile, String identitiesfile){
-		this.contactsfile = contactsfile;
-		this.identitiesfile = identitiesfile;
-		contacts = (Vector<C_Contact>) loadObject(contactsfile);
-		identities = (Vector<C_Identitiy>) loadObject(identitiesfile);
+		this.contactsfile	= contactsfile;
+		this.identitiesfile	= identitiesfile;
+		this.contacts		= (Vector<C_Contact>) loadObject(contactsfile);
+		this.identities		= (Vector<C_Identitiy>) loadObject(identitiesfile);
 	}
 	
 	public C_Identitiy addIdentity(String name, String email, String telnr, String passwd){
@@ -122,6 +124,17 @@ public class C_Model {
 			System.out.println("Datei konnten nicht geladen werden!");
 		}
 			
+		return result;
+	}
+	
+	public int checkForMsg(){
+		int result = 0;
+		
+		ListIterator<C_Contact> iterator = contacts.listIterator();
+		while(iterator.hasNext()){
+			iterator.next().
+		}
+		
 		return result;
 	}
 	

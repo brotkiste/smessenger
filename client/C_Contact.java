@@ -50,6 +50,10 @@ public class C_Contact implements Serializable {
 	public void sendTextMsg(C_Identitiy absender, String msg, boolean encrypted){
 		server.sendTextMsg(absender, this, msg, encrypted);
 	}
+	
+	public int checkForMsg(){
+		return server.checkForMsg(pubKey);
+	}
 
 	public PGPPublicKey getKeyObject() {
 		return this.pubKey.getKeyObject();
