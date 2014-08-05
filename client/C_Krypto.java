@@ -81,7 +81,7 @@ public class C_Krypto {
 		
 		PGPPublicKey pubKey;
 		PGPPublicKey secretKey;
-		
+	
 
 		try {
 			pubKey = PGPExampleUtil.readPublicKey("pub.asc");

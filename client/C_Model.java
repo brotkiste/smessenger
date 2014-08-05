@@ -133,6 +133,7 @@ public class C_Model {
 		ListIterator<C_Contact> iterator = contacts.listIterator();
 		while(iterator.hasNext()){
 			iterator.next().
+			//TODO
 		}
 		
 		return result;
