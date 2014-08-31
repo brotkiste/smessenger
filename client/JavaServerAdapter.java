@@ -74,12 +74,20 @@ public class JavaServerAdapter extends ServerAdapter {
 	}
 
 	@Override
-	public Msg[] checkForMsg(C_PubKey pubKey) {
-		this.pubKey = pubKey;
+	public Msg[] checkForMsg(Vector<C_Identity> identities) {
 		Msg[] result = null;
+		Cmd response = null;
 		try {
 			out.writeObject(new Cmd(Protokoll.GETMESSAGESTAMPS));
-			result = (Msg[]) process(getResponse());
+			response = (Cmd)getResponse();
+			if(response.getCmdCode()==Protokoll.MESSAGESTAMPS){
+				response.getData();
+				//TODO Übergabeformat für die Stamps definieren!!
+			}else{
+				System.out.println("checkForMsg(...): unerwartete Serverantwort");
+				return null;
+			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,26 +96,6 @@ public class JavaServerAdapter extends ServerAdapter {
 		return null;
 	}
 	
-	private Object process(Object response) {
-		Object result = null;
-		
-		if(response.getClass()==Cmd.class){
-			Cmd cmd = ((Cmd)response);
-			switch(cmd.getCmdCode()){
-				case Protokoll.MESSAGESTAMPS:
-					Vector<String> tmp = new Vector<String>();
-					Vector<String> stamps = ((Vector<String>)cmd.getData());
-					ListIterator<String> it = stamps.listIterator();
-					while(it.hasNext()){
-						tmp.add(C_Krypto.decryptString(it.next(), filenameForPrivateKey, passwd))
-					//TODO Damit für verschiedene Identitäten abgerufen werden kann, muss C_Krypto.decryptString(...) angepasst werden!!
-					}
-					result = tmp;
-					break;
-			}
-		}
-		return result;
-	}
 
 	private Object getResponse(){
 		try {

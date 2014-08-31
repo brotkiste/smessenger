@@ -18,23 +18,23 @@ public class C_Model {
 	
 	
 	private Vector<C_Contact>  		contacts;
-	private Vector<C_Identitiy> 	identities;
+	private Vector<C_Identity> 	identities;
 	private Vector<C_Server> 		servers;
 	
 	public C_Model(String contactsfile, String identitiesfile){
 		this.contactsfile	= contactsfile;
 		this.identitiesfile	= identitiesfile;
 		this.contacts		= (Vector<C_Contact>) loadObject(contactsfile);
-		this.identities		= (Vector<C_Identitiy>) loadObject(identitiesfile);
+		this.identities		= (Vector<C_Identity>) loadObject(identitiesfile);
 	}
 	
-	public C_Identitiy addIdentity(String name, String email, String telnr, String passwd){
+	public C_Identity addIdentity(String name, String email, String telnr, String passwd){
 		C_Krypto.genKeyPair(name, telnr, email, passwd);
 		return null;
 	}
 	
-	public C_Identitiy addIdentitiy(String name, String email, String telnr, String passwd, C_KeyPair keyPair){
-		C_Identitiy result = new C_Identitiy(name, email, telnr, passwd, keyPair);
+	public C_Identity addIdentitiy(String name, String email, String telnr, String passwd, C_KeyPair keyPair){
+		C_Identity result = new C_Identity(name, email, telnr, passwd, keyPair);
 		identities.add(result);
 		return result;
 		

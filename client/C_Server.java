@@ -1,6 +1,7 @@
 package client;
 
 import java.io.Serializable;
+import java.util.Vector;
 
 public class C_Server implements Serializable{
 	
@@ -34,7 +35,7 @@ public class C_Server implements Serializable{
 	}
 
 
-	public void sendTextMsg(C_Identitiy absender, C_Contact empfaenger,
+	public void sendTextMsg(C_Identity absender, C_Contact empfaenger,
 			String msg, boolean encrypted) {
 		
 		this.initialize();
@@ -59,12 +60,12 @@ public class C_Server implements Serializable{
 		sAdapter.closeConnection();
 	}
 
-	public int checkForMsg(C_PubKey pubKey) {
+	public int checkForMsg(Vector<C_Identity> identities) {
 		
 		this.initialize();
 		
 		sAdapter.openConnection();
-		sAdapter.checkForMsg(pubKey);
+		sAdapter.checkForMsg(identities);
 		sAdapter.closeConnection();
 		return 0;
 	}

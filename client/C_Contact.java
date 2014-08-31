@@ -47,13 +47,10 @@ public class C_Contact implements Serializable {
 	 * @param msg		Nachricht
 	 * @param encrypted	ob die Nachricht verschlüsselt werden soll
 	 */
-	public void sendTextMsg(C_Identitiy absender, String msg, boolean encrypted){
+	public void sendTextMsg(C_Identity absender, String msg, boolean encrypted){
 		server.sendTextMsg(absender, this, msg, encrypted);
 	}
 	
-	public int checkForMsg(){
-		return server.checkForMsg(pubKey);
-	}
 
 	public PGPPublicKey getKeyObject() {
 		return this.pubKey.getKeyObject();

@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author matthias
  *
  */
-public class C_Identitiy implements Serializable{
+public class C_Identity implements Serializable{
 	
 	private String name;
 	private String email;
@@ -23,7 +23,7 @@ public class C_Identitiy implements Serializable{
 	 * @param passwd	//TODO Es sollte später möglich sein, kein Passwort für den PrivateKey zu speichern und den User bei Bedarf danach zu fragen
 	 * @param keyPair
 	 */
-	public C_Identitiy(String name, String email, String telnr, String passwd,
+	public C_Identity(String name, String email, String telnr, String passwd,
 			C_KeyPair keyPair) {
 		this.name 		= name;
 		this.email 		= email;
